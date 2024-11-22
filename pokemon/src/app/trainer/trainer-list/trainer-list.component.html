@@ -1,31 +1,36 @@
 <div>
   <div>
-    <!-- Mostrar detalles de un entrenador seleccionado -->
     <div *ngIf="selected">
-      <app-trainer-detail [trainerDetail]="selectedTrainer"></app-trainer-detail>
+      <app-trainer-detail
+        [trainerDetail]="selectedTrainer"
+      ></app-trainer-detail>
     </div>
-
-    <!-- Tabla de entrenadores -->
-    <table class="table table-striped">
+    <table>
       <thead>
         <tr>
-          <th class="h4">Trainer's Name</th>
+          <th class="h4">Trainers's Name</th>
           <th class="h4">Trainer's Image</th>
-          <th class="h4">Trainer's Small Snapshot</th>
-          <th class="h4">Actions</th>  <!-- Para agregar acciones como "Ver Detalle" -->
+          <th class="h4">Trainer's Samll snapshot</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let t of trainers" (click)="onSelected(t)">
-          <td>{{ t.name }}</td>
+        <tr
+          *ngFor="let t of trainers"
+          class="row-table"
+          (click)="onSelected(t)"
+        >
           <td>
-            <img [src]="t.imageUrl" alt="Trainer's Image" class="img-thumbnail" />
+            <dd>{{ t.name }}</dd>
           </td>
-          <td>{{ t.smallSnopsies }}</td>
-
-          <!-- Enlace para ver detalles del entrenador -->
           <td>
-            <a [routerLink]="['/trainers/detail', t.id]" class="btn btn-primary">Ver Detalle</a>
+            <img
+              [src]="t.imageUrl"
+              alt="Trainer's Image"
+              class="img-thumbnail"
+            />
+          </td>
+          <td>
+            <dd>{{ t.smallSnopsies }}</dd>
           </td>
         </tr>
       </tbody>
